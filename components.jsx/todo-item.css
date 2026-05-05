@@ -1,0 +1,96 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  transition: background 0.2s, opacity 0.2s;
+  animation: slideIn 0.22s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item.completed {
+  opacity: 0.65;
+  background: #f0ede9;
+}
+
+.check-circle {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+}
+
+.check-circle:hover {
+  border-color: var(--success);
+}
+
+.todo-item.completed .check-circle {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.check-circle svg {
+  width: 14px;
+  height: 14px;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.97rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.todo-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.item-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-complete,
+.btn-delete {
+  padding: 5px 11px;
+  font-family: "Lato", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.1s;
+  letter-spacing: 0.2px;
+}
+
+.btn-complete           { background: var(--success); color: #fff; }
+.btn-complete:hover     { background: var(--success-dark); }
+.btn-complete.undo      { background: #d0cdc9; color: var(--text-primary); }
+.btn-complete.undo:hover{ background: #bbb8b4; }
+.btn-delete             { background: var(--danger); color: #fff; }
+.btn-delete:hover       { background: var(--danger-dark); }
+
+.btn-complete:active,
+.btn-delete:active { transform: scale(0.94); }
+
+@media (max-width: 400px) {
+  .item-actions { flex-direction: column; }
+}
